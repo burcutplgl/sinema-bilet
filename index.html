@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app">
+        <!-- üst bar-->
+         <nav class="topbar">
+            <div class="topbar-inner">
+                <span class="logo">🍿 Cine<strong>Bilet</strong></span>
+                <span class="topbar-tag">Online Rezervasyon</span>
+            </div>
+         </nav>
+         <!--adım göstergesi-->
+         <div class="stepper">
+            <div class="step active" data-step="1">
+                <div class="step-circle">1</div>
+                <span class="step-label">Koltuk Seç</span>
+            </div>
+
+           <div class="step-line"></div>
+
+            <div class="step" data-step="2">
+                <div class="step-circle">2</div>
+                <span class="step-label"> Bilgiler</span>
+            </div>
+
+           <div class="step-line"></div>
+
+            <div class="step" data-step="3">
+                <div class="step-circle">3</div>
+                <span class="step-label">Bilet</span>
+            </div>
+         </div>
+
+          <!--adım 1 : koltuk seçimi-->
+          <section class="page  page-active" id="page-1">
+             <!--film kartı-->
+             <div class="movie-card">
+                <div class="movie-poster">
+                     <img
+              src="https://m.media-amazon.com/images/S/pv-target-images/7e1b86f219e65552c4693e046ff8f1ba0c71c52dfe50bfb4081fb87f75e8b1c6.jpg"
+              alt="afiş"
+            />
+            <span class="poster-rating">⭐ 8.7</span> 
+                </div>
+            <div class="movie-details">
+                <div class="movie-title-row">
+                    <h2 class="movie-title">Yıldızlararası</h2>
+                    <span class="movie-age">13+</span>
+                </div>
+                <div class="movie-meta">
+                    <span class="meta-tag">Bilim Kurgu</span>
+                    <span class="meta-tag">Macera</span>
+                    <span class="meta-tag">169 dk</span>
+                </div>
+                  <p class="movie-desc">
+              Dünya'nın son günlerinde bir grup kaşif, insanlığı kurtarmak için bir solucan
+              deliğinden geçerek galaksiler ötesine yolculuk eder.
+            </p>
+            <div class="movie-session">
+                <div class="session-item">
+                    <span class="session-icon">📅</span>
+                    <span>Bugün</span>
+                </div>
+                 <div class="session-item">
+                    <span class="session-icon">🕐</span>
+                    <span>20:30</span>
+                </div>
+                 <div class="session-item">
+                    <span class="session-icon">📍</span>
+                    <span>Salon 3</span>
+                </div>
+            </div>
+            </div>
+                </div>
+                 <!-- Fiyat Bilgisi -->
+                  <div class="price-strip">
+                    <span>Bilet ücreti</span>
+                    <span class="price-amount">85 ₺ <small>kişi</small></span>
+                  </div>
+
+                  <!-- salon -->
+          <div class="cinema-hall">
+          <div class="screen-wrapper">
+            <div class="screen-curve">
+              <div class="screen-text">P E R D E</div>
+            </div>
+            <div class="screen-glow"></div>
+          </div>
+
+          <div id="seat-map" class="seat-map"></div>
+
+          <div class="legend">
+            <div class="legend-item">
+                <span class="legend-dot legend-available"></span>
+                <span>Boş</span>
+            </div>
+             <div class="legend-item">
+                <span class="legend-dot legend-selected"></span>
+                 <span>Seçili</span>
+            </div>
+             <div class="legend-item">
+                <span class="legend-dot legend-occupied"></span>
+                 <span>Dolu</span>
+            </div>
+          </div>
+          </div>
+
+           <!-- seçili koltuk etiketleri -->
+            <div class="selected-tags" id="selected-tags"></div>
+
+             <!-- alt özet bar -->
+                <div class="summary-bar" id="summary-bar">
+          <div class="summary-left">
+            <div class="summary-count">
+              <span class="summary-number" id="selected-count">0</span>
+              <span class="summary-text">Koltuk</span>
+            </div>
+            <div class="summary-divider"></div>
+            <div class="summary-count">
+              <span class="summary-number" id="total-price">0 ₺</span>
+              <span class="summary-text">Toplam</span>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-next" id="btn-to-step2" disabled>Devam Et</button>
+         </div>
+         </section>
+
+         <!--adım 2 : bilgi formu -->
+         <section class="page" id="page-2">
+            <div class="form-card">
+                <div class="form-header">
+                    <h2 class="form-title">Kişisel Bilgiler</h2>
+                    <p class="form-subtitle">Biletiniz bu bilgilerle oluşturulacak.</p>
+          <form id="booking-form">
+            <div class="input-group">
+              <label for="fullname">Ad Soyad</label>
+              <div class="input-wrapper">
+                <span class="input-icon">👤</span>
+                <input
+                  type="text"
+                  id="fullname"
+                  placeholder="Örn: Ali Yılmaz"
+                  autocomplete="name"
+                />
+                <span class="input-status" id="fullname-status"></span>
+              </div>
+              <span class="error-msg" id="fullname-error"></span>
+            </div>
+
+            <div class="input-group">
+              <label for="email">E-posta Adresi</label>
+              <div class="input-wrapper">
+                <span class="input-icon">✉️</span>
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="Örn: ali@gmail.com"
+                  autocomplete="email"
+                />
+                <span class="input-status" id="email-status"></span>
+              </div>
+              <span class="error-msg" id="email-error"></span>
+            </div>
+
+            <div class="input-group">
+              <label for="phone">Telefon Numarası</label>
+              <div class="input-wrapper">
+                <span class="input-icon">📱</span>
+                <input
+                  type="tel"
+                  id="phone"
+                  placeholder="Örn: 0544 444 44"
+                  autocomplete="phone"
+                />
+                <span class="input-status" id="phone-status"></span>
+              </div>
+              <span class="error-msg" id="phone-error"></span>
+            </div>
+          </form>
+        </div>
+
+
+         <!--sipariş özeti -->
+        <div class="order-summary">
+          <h3 class="order-title">Sipariş Özeti</h3>
+          <div class="order-row">
+            <span class="order-label">Film</span>
+            <span class="order-value">Yıldızlararası</span>
+          </div>
+          <div class="order-row">
+            <span class="order-label">Seans</span>
+            <span class="order-value">Bugün · 20:30 · Salon3</span>
+          </div>
+          <div class="order-row">
+            <span class="order-label">Koltuklar</span>
+            <span class="order-value order-highlight" id="recap-seats">--</span>
+          </div>
+          <div class="order-row order-total-row">
+            <span class="order-label">Koltuklar</span>
+            <span class="order-value order-total-value" id="recap-total">0 ₺</span>
+          </div>
+        </div>
+
+
+         <!--butoonlar -->
+         <div class="form-actions">
+            <button class="btn btn-ghost" id="btn-back-1">Geri</button>
+            <button class="btn btn-primary" id="btn-confirm">Bileti Onaylaa</button>
+         </div>
+         </section>
+
+
+          <!--adım 3 : bilet kartı -->
+          <section class="page" id="page-3">
+        <div class="success-message">
+          <div class="success-icon">✅</div>
+          <h2>Rezervasyon Tamamlandı!</h2>
+          <p>Bilet detayları aşağıdadır</p>
+        </div>
+
+     <div class="ticket">
+      <div class="ticket-top">
+     <div class="ticket-top-header">
+     <span class="ticket-logo">🍿 CineBilet</span>
+     <span class="ticket-confirmed">ONAYLANDI</span>
+        </div>
+        <div class="ticket-movie-name">Yıldızlararası</div>
+        <div class="ticket-session-info">Bugün · 20:30 · Salon 3</div>
+        <div class="ticket-details">
+            <div class="ticket-details-item">
+                <span class="ticket-detail-label">Ad Soyad</span>
+                <span class="ticket-detail-value" id="ticket-name">--</span>
+            </div>
+             <div class="ticket-details-item">
+                <span class="ticket-detail-label">Koltuklar</span>
+                <span class="ticket-detail-value" id="ticket-seats">--</span>
+            </div>
+             <div class="ticket-details-item">
+                <span class="ticket-detail-label">Kişi Sayısı</span>
+                <span class="ticket-detail-value" id="ticket-count">--</span>
+            </div>
+             <div class="ticket-details-item">
+                <span class="ticket-detail-label">Toplam Tutar</span>
+                <span class="ticket-detail-value" id="ticket-total">--</span>
+        </div>
+        </div>
+         </div>
+
+         <!--çizgi -->
+    <div class="ticket-tear">
+    <div class="tear-circle tear-left"></div>
+    <div class="tear-line"></div>
+    <div class="tear-circle tear-right"></div>
+      </div>
+
+    <div class="ticket-bottom">
+    <div class="ticket-barcode">▌▌▌ ▌▌ ▌▌▌▌ ▌▌ ▌▌▌ ▌▌▌▌ ▌▌ ▌▌▌ ▌▌</div>
+   <div class="ticket-enjoy">İyi Seyirler! 🍿</div>
+      </div>
+         </div>
+
+ <button class="btn btn-ghost btn-full" id="btn-new">Yeni Rezervasyon Yap</button>
+    </section>
+     </div>
+    <script src="app.js"></script>
+</body>
+</html>
